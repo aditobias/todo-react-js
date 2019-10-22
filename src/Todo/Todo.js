@@ -15,7 +15,7 @@ class Todo extends React.Component{
     
     regenerateTodo = () =>{
         this.setState(state => {
-            const varList = state.list.push(<TodoItem key={this.state.todoItem} todoItemName ={this.state.todoItem} />);
+            const varList = state.list.push(<TodoItem key={this.state.todoItem} todoItemName ={this.state.todoItem} status={false} />);
             return {varList, todoItem: ''};
         });
    }
@@ -33,11 +33,9 @@ class Todo extends React.Component{
                     <input type = "text" value={this.state.toDo} onChange={this.handleInputChange}/>
                     <button onClick={this.regenerateTodo}>Todo</button>
                 </div>
-                <ul>
+                <ul style={{listStyleType: "none"}}>
                     {this.state.list.map(item => (
-                        <li key={item}>
-                            {item}
-                        </li>
+                        <li key={item}>{item}</li>
                     ))}
                 </ul>
             </div>
